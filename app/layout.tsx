@@ -46,8 +46,24 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'IAM',
+    url: 'https://iamminainstudio.com',
+    logo: 'https://iamminainstudio.com/img/og-image.png',
+    sameAs: ['https://github.com/yoojungrim'],
+    description: 'Web Architecture · Platforms · Security',
+  }
+
   return (
     <html lang="ko">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <LanguageProvider>
           <Navigation />

@@ -331,7 +331,7 @@ export default function EstimatePage() {
                         }
                         className="mr-4 w-5 h-5"
                       />
-                      <span className="text-lg">{t.projectTypeLabels[type] ?? type}</span>
+                      <span className="text-lg">{(t.projectTypeLabels as Record<string, string>)[type] ?? type}</span>
                     </label>
                   ))}
                 </div>
@@ -359,7 +359,7 @@ export default function EstimatePage() {
                         onChange={() => handleFeatureToggle(feature)}
                         className="mr-4 w-5 h-5"
                       />
-                      <span className="text-lg">{t.featureLabels[feature] ?? feature}</span>
+                      <span className="text-lg">{(t.featureLabels as Record<string, string>)[feature] ?? feature}</span>
                     </label>
                   ))}
                 </div>
@@ -391,7 +391,7 @@ export default function EstimatePage() {
                         }
                         className="mr-4 w-5 h-5"
                       />
-                      <span className="text-lg">{t.budgetLabels[range] ?? range}</span>
+                      <span className="text-lg">{(t.budgetLabels as Record<string, string>)[range] ?? range}</span>
                     </label>
                   ))}
                 </div>
@@ -423,7 +423,7 @@ export default function EstimatePage() {
                         }
                         className="mr-4 w-5 h-5"
                       />
-                      <span className="text-lg">{t.timelineLabels[timeline] ?? timeline}</span>
+                      <span className="text-lg">{(t.timelineLabels as Record<string, string>)[timeline] ?? timeline}</span>
                     </label>
                   ))}
                 </div>

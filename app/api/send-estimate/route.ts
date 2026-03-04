@@ -59,14 +59,16 @@ function buildUserBody(type: string, payload: unknown, services?: Service[]): st
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    const { type, data, estimatedCost } = body as {
+    const body = (await request.json()) as {
       type: 'general' | 'security'
       data: Record<string, unknown>
-      services?: Service[]
+      services?: unknown
       estimatedCost?: string
     }
-    const services: Service[] = body.services || []
+    const { type, data, estimatedCost } = body
+    const services: Service[] = Array.isArray(body.services)
+      ? (body.services as Service[])
+      : []
 
     const transporter = getTransporter()
     const adminPayload = type === 'security'

@@ -1001,7 +1001,9 @@ a { color: inherit; text-decoration: none; }
 .footer-minimal .footer-icon {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .footer-minimal .footer-bottom-text p {

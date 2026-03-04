@@ -4,8 +4,13 @@ import Navigation from '@/components/Navigation'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 
 export const metadata: Metadata = {
-  title: 'IAM - Web Architecture · Platforms · Security',
-  description: 'IAM is a Web Architecture & Security-focused technology studio specializing in Web Development, Full-Stack Engineering, Multi-Platform solutions, Python & AI Development, and Security & Penetration Testing.',
+  title: 'IAM - Web Architecture',
+  description: 'Web Architecture · Platforms · Security',
+  openGraph: {
+    title: 'IAM',
+    description: 'Web Architecture · Platforms · Security',
+    images: ['/img/og-image.png'],
+  },
 }
 
 export default function RootLayout({

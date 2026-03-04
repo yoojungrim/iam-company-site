@@ -5,6 +5,11 @@ const ADMIN_EMAIL = 'yoojungrim102@gmail.com'
 const IAM_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://iam-website.example.com'
 const IAM_EMAIL = 'yoojungrim102@gmail.com'
 
+type Service = {
+  serviceItem?: string
+  cost?: string
+}
+
 function getTransporter() {
   const user = process.env.SMTP_USER || process.env.GMAIL_USER
   const pass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD
@@ -26,7 +31,7 @@ function buildAdminBody(type: string, payload: unknown): string {
   ].join('\n')
 }
 
-function buildUserBody(type: string, payload: unknown, services?: unknown[]): string {
+function buildUserBody(type: string, payload: unknown, services?: Service[]): string {
   const lines = [
     '안녕하세요, IAM입니다.',
     '',
@@ -37,7 +42,7 @@ function buildUserBody(type: string, payload: unknown, services?: unknown[]): st
   ]
   if (services && services.length > 0) {
     lines.push('', '--- 선택하신 보안 서비스 ---')
-    services.forEach((s: { serviceItem?: string; cost?: string }) => {
+    services.forEach((s) => {
       lines.push(`- ${s.serviceItem ?? ''}: ${s.cost ?? ''}`)
     })
   }
@@ -55,12 +60,13 @@ function buildUserBody(type: string, payload: unknown, services?: unknown[]): st
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { type, data, services, estimatedCost } = body as {
+    const { type, data, estimatedCost } = body as {
       type: 'general' | 'security'
       data: Record<string, unknown>
-      services?: Array<{ serviceItem?: string; cost?: string }>
+      services?: Service[]
       estimatedCost?: string
     }
+    const services: Service[] = body.services || []
 
     const transporter = getTransporter()
     const adminPayload = type === 'security'

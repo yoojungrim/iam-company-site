@@ -1006,6 +1006,12 @@ a { color: inherit; text-decoration: none; }
   image-rendering: crisp-edges;
 }
 
+/* 리눅스·Next.js 등 원형으로 채워서 다른 로고와 동일한 원형 느낌 */
+.footer-minimal .footer-icon-wrap--round .footer-icon {
+  object-fit: cover;
+  object-position: center;
+}
+
 .footer-minimal .footer-bottom-text p {
   margin: 0;
 }

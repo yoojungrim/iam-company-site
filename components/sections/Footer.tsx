@@ -13,8 +13,8 @@ const footerIcons = [
   { src: '/icons/Spring.png', alt: 'Spring' },
   { src: '/icons/Oracle.png', alt: 'Oracle' },
   { src: '/icons/C++ (CPlusPlus).png', alt: 'C++' },
-  { src: '/icons/KakaoTalk_20260304_133304363.png', alt: 'Logo' },
-  { src: '/icons/KakaoTalk_20260304_133453259.png', alt: 'Logo' },
+  { src: '/icons/KakaoTalk_20260304_133304363.png', alt: 'Linux', round: true },
+  { src: '/icons/KakaoTalk_20260304_133453259.png', alt: 'Next.js', round: true },
 ]
 
 const content = {
@@ -110,7 +110,10 @@ export default function Footer() {
           </div>
           <div className="footer-icons">
             {footerIcons.map((icon) => (
-              <span key={icon.src} className="footer-icon-wrap">
+              <span
+                key={icon.src}
+                className={`footer-icon-wrap ${icon.round ? 'footer-icon-wrap--round' : ''}`}
+              >
                 <Image
                   src={icon.src}
                   alt={icon.alt}

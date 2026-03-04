@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'IAM - Web Architecture',
   description: 'Web Architecture · Platforms · Security',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'IAM',
     description: 'Web Architecture · Platforms · Security',
@@ -31,6 +34,7 @@ export const metadata: Metadata = {
     images: ['/img/og-image.png'],
   },
   verification: {
+    google: 'c81e315ded240371',
     other: {
       'naver-site-verification': '3158eef9ac04eddd147d156601c22d1c85fa853d',
     },

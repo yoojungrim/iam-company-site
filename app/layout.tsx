@@ -30,6 +30,11 @@ export const metadata: Metadata = {
     description: 'Web Architecture · Platforms · Security',
     images: ['/img/og-image.png'],
   },
+  verification: {
+    other: {
+      'naver-site-verification': '3158eef9ac04eddd147d156601c22d1c85fa853d',
+    },
+  },
 }
 
 export default function RootLayout({

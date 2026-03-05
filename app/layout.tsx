@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: 'IAM',
     images: [
       {
-        url: '/img/og-image.png',
+        url: '/img/KakaoTalk_20260305_133816556.png',
         width: 1200,
         height: 630,
         alt: 'IAM - Web Architecture',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'IAM',
     description: 'Web Architecture · Platforms · Security',
-    images: ['/img/og-image.png'],
+    images: ['/img/KakaoTalk_20260305_133816556.png'],
   },
   verification: {
     google: 'c81e315ded240371',
@@ -58,7 +58,7 @@ export default function RootLayout({
     '@type': 'Organization',
     name: 'IAM',
     url: 'https://iamminainstudio.com',
-    logo: 'https://iamminainstudio.com/img/og-image.png',
+    logo: 'https://iamminainstudio.com/img/KakaoTalk_20260305_133816556.png',
     sameAs: ['https://github.com/yoojungrim'],
     description: 'Web Architecture · Platforms · Security',
   }

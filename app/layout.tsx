@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: 'IAM',
     images: [
       {
-        url: '/img/og-image.png',
+        url: `${siteUrl}/img/og-image.png?v=2`,
         width: 1200,
         height: 630,
         alt: 'IAM - Web Architecture',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'IAM',
     description: 'Web Architecture · Platforms · Security',
-    images: ['/img/og-image.png'],
+    images: [`${siteUrl}/img/og-image.png?v=2`],
   },
   verification: {
     google: 'c81e315ded240371',

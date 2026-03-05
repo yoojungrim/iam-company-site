@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 const ADMIN_EMAIL = 'yoojungrim102@gmail.com'
-const IAM_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://iam-website.example.com'
+const IAM_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://iamminainstudio.com'
 const IAM_EMAIL = 'yoojungrim102@gmail.com'
 
 type Service = {

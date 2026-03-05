@@ -10,7 +10,11 @@ export const metadata: Metadata = {
   title: 'IAM - Web Architecture',
   description: 'Web Architecture · Platforms · Security',
   icons: {
-    icon: '/icons/faviconian1.png',
+    icon: [
+      { url: '/img/faviconian11.png', sizes: '32x32', type: 'image/png' },
+      { url: '/img/faviconian11.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/img/faviconian11.png',
   },
   alternates: {
     canonical: '/',

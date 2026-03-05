@@ -1044,14 +1044,22 @@ a { color: inherit; text-decoration: none; }
   .footer-minimal .footer-grid-sep {
     display: none;
   }
+  .footer-minimal .footer-grid {
+    justify-items: center;
+  }
   .footer-minimal .footer-grid-col-brand,
   .footer-minimal .footer-grid-col-services,
   .footer-minimal .footer-grid-col-contact {
     margin-left: 0;
     text-align: center;
+    width: 100%;
+    max-width: 100%;
   }
   .footer-minimal .footer-list {
     text-align: center;
+  }
+  .footer-minimal .footer-grid-col-contact .footer-list li.flex {
+    justify-content: center;
   }
   .footer-minimal .footer-brand { font-size: 20px; }
   .footer-minimal .footer-icons {

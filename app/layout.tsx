@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'IAM - Web Architecture',
   description: 'Web Architecture · Platforms · Security',
+  icons: {
+    icon: '/icons/faviconian1.png',
+  },
   alternates: {
     canonical: '/',
   },

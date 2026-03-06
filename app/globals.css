@@ -201,6 +201,68 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
+/* 모바일 전용: 서비스 카드 가로 스와이프 (768px 미만) */
+@media (max-width: 767px) {
+  .expertise-cards-outer {
+    width: 100%;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+  .expertise-cards-outer .cards-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding: 0 10vw;
+    gap: 16px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .expertise-cards-outer .cards-container .service-card {
+    width: 80vw !important;
+    min-width: 80vw !important;
+    max-width: 80vw !important;
+    flex: 0 0 80vw !important;
+    min-height: 200px;
+    height: auto !important;
+    max-height: none;
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
+  }
+  .expertise-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.25rem;
+    padding: 0;
+  }
+  .expertise-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .expertise-dot:hover {
+    background: #999;
+  }
+  .expertise-dot.active {
+    background: #333;
+    transform: scale(1.2);
+  }
+}
+@media (min-width: 768px) {
+  .expertise-dots {
+    display: none;
+  }
+}
+
 /* ========================= */
 /* 카드 컨테이너 */
 /* ========================= */

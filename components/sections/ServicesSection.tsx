@@ -1,6 +1,5 @@
 'use client'
 
-import { useRef, useState, useCallback, useEffect } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 const services = {
@@ -127,55 +126,9 @@ function ServiceIcon({ type, color = '#d1d5db' }: { type: string; color?: string
   }
 }
 
-const SLIDER_DOTS = 4
-
 export default function ServicesSection() {
   const { language } = useLanguage()
   const currentServices = services[language]
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [activeDot, setActiveDot] = useState(0)
-
-  const updateActiveDot = useCallback(() => {
-    const el = scrollRef.current
-    if (!el) return
-    const vw = el.clientWidth
-    const cardWidth = vw * 0.75
-    const gap = 16
-    const step = cardWidth + gap
-    const scrollLeft = el.scrollLeft
-    const index = Math.round(scrollLeft / step)
-    const clamped = Math.max(0, Math.min(index, currentServices.length - 1))
-    setActiveDot(clamped <= 1 ? 0 : clamped === 2 ? 1 : clamped === 3 ? 2 : 3)
-  }, [currentServices.length])
-
-  const scrollToDot = (dotIndex: number) => {
-    const el = scrollRef.current
-    if (!el) return
-    const vw = el.clientWidth
-    const cardWidth = vw * 0.75
-    const gap = 16
-    const step = cardWidth + gap
-    const cardIndex = dotIndex === 0 ? 0 : dotIndex === 1 ? 2 : dotIndex === 2 ? 3 : 4
-    el.scrollTo({ left: Math.min(cardIndex, currentServices.length - 1) * step, behavior: 'smooth' })
-  }
-
-  useEffect(() => {
-    const el = scrollRef.current
-    if (!el) return
-    let index = 0
-    const interval = setInterval(() => {
-      const vw = el.clientWidth
-      const cardWidth = vw * 0.75
-      const gap = 16
-      const step = cardWidth + gap
-      index = (index + 1) % currentServices.length
-      el.scrollTo({
-        left: index * step,
-        behavior: 'smooth',
-      })
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [currentServices.length])
 
   return (
     <section 
@@ -192,42 +145,20 @@ export default function ServicesSection() {
           {language === 'ko' ? 'OUR EXPERTISE & INNOVATION' : 'OUR EXPERTISE & INNOVATION'}
         </h2>
         
-        {/* 모바일 전용: 차콜 컨테이너 > 라이트 패널 > 슬라이더 */}
-        <div className="services-mobile-container">
-          <div className="services-mobile-inner">
-            <div
-              ref={scrollRef}
-              className="expertise-cards-outer"
-              onScroll={updateActiveDot}
-            >
-              <div className="cards-container">
-                {/* 배경 이미지 */}
-                <div 
-                  className="bg-bar"
-                  style={{
-                    backgroundImage: `url('/img/ChatGPT Image 2026년 2월 26일 오후 05_14_57.png')`,
-                  }}
-                ></div>
-                
-                {/* 카드들 */}
-                {currentServices.map((service, index) => (
-                  <ServiceCard key={index} service={service} index={index} />
-                ))}
-              </div>
-            </div>
-            {/* 모바일 전용 인디케이터 */}
-            <div className="expertise-dots" aria-hidden>
-              {Array.from({ length: SLIDER_DOTS }).map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  className={`expertise-dot ${activeDot === i ? 'active' : ''}`}
-                  onClick={() => scrollToDot(i)}
-                  aria-label={language === 'ko' ? `슬라이드 ${i + 1}` : `Slide ${i + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+        {/* 카드 컨테이너 */}
+        <div className="cards-container">
+          {/* 배경 이미지 */}
+          <div 
+            className="bg-bar"
+            style={{
+              backgroundImage: `url('/img/ChatGPT Image 2026년 2월 26일 오후 05_14_57.png')`,
+            }}
+          ></div>
+          
+          {/* 카드들 */}
+          {currentServices.map((service, index) => (
+            <ServiceCard key={index} service={service} index={index} />
+          ))}
         </div>
       </div>
     </section>

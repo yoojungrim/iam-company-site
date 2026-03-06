@@ -201,35 +201,54 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
-/* 모바일 전용: 서비스 카드 가로 스와이프 (768px 미만) */
+/* 모바일 전용: 차콜 컨테이너 + 라이트 패널 + 슬라이더 (768px 미만, 기존 카드/타이틀/애니메이션 CSS 변경 없음) */
 @media (max-width: 767px) {
-  .expertise-cards-outer {
-    width: 100%;
-    height: auto;
-    padding-bottom: 2rem;
+  .services-mobile-container {
+    position: relative;
+    background: #3a3a3a;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
   }
-  .expertise-cards-outer .cards-container {
+  .services-mobile-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' fill='%23000'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .services-mobile-inner {
+    position: relative;
+    z-index: 1;
+    background: #f2f2f2;
+    border-radius: 22px;
+    padding: 24px 0;
+  }
+  .services-mobile-inner .expertise-cards-outer {
     overflow-x: auto;
-    overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+  }
+  .services-mobile-inner .cards-container {
     flex-wrap: nowrap;
     justify-content: flex-start;
-    padding: 0 10vw;
+    padding: 0 12vw;
     gap: 16px;
-    margin-left: 0;
-    margin-right: 0;
   }
-  .expertise-cards-outer .cards-container .service-card {
-    width: 80vw !important;
-    min-width: 80vw !important;
-    max-width: 80vw !important;
-    flex: 0 0 80vw !important;
-    min-height: 200px;
-    height: auto !important;
-    max-height: none;
+  .services-mobile-inner .cards-container .bg-bar {
+    display: none;
+  }
+  .services-mobile-inner .service-card {
+    flex: 0 0 75vw;
     scroll-snap-align: center;
-    scroll-snap-stop: normal;
+  }
+  .services-mobile-inner .service-card:active {
+    transform: translateY(-12px) scale(1.08);
   }
   .expertise-dots {
     display: flex;

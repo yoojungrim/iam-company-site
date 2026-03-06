@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useCallback } from 'react'
+import { useRef, useState, useCallback, useEffect } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 const services = {
@@ -139,7 +139,7 @@ export default function ServicesSection() {
     const el = scrollRef.current
     if (!el) return
     const vw = el.clientWidth
-    const cardWidth = vw * 0.8
+    const cardWidth = vw * 0.75
     const gap = 16
     const step = cardWidth + gap
     const scrollLeft = el.scrollLeft
@@ -152,12 +152,30 @@ export default function ServicesSection() {
     const el = scrollRef.current
     if (!el) return
     const vw = el.clientWidth
-    const cardWidth = vw * 0.8
+    const cardWidth = vw * 0.75
     const gap = 16
     const step = cardWidth + gap
     const cardIndex = dotIndex === 0 ? 0 : dotIndex === 1 ? 2 : dotIndex === 2 ? 3 : 4
     el.scrollTo({ left: Math.min(cardIndex, currentServices.length - 1) * step, behavior: 'smooth' })
   }
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    let index = 0
+    const interval = setInterval(() => {
+      const vw = el.clientWidth
+      const cardWidth = vw * 0.75
+      const gap = 16
+      const step = cardWidth + gap
+      index = (index + 1) % currentServices.length
+      el.scrollTo({
+        left: index * step,
+        behavior: 'smooth',
+      })
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [currentServices.length])
 
   return (
     <section 
@@ -174,37 +192,41 @@ export default function ServicesSection() {
           {language === 'ko' ? 'OUR EXPERTISE & INNOVATION' : 'OUR EXPERTISE & INNOVATION'}
         </h2>
         
-        {/* 카드 스와이프 래퍼 (모바일에서만 스크롤 영역) */}
-        <div className="expertise-cards-outer">
-          <div
-            ref={scrollRef}
-            className="cards-container"
-            onScroll={updateActiveDot}
-          >
-            {/* 배경 이미지 */}
-            <div 
-              className="bg-bar"
-              style={{
-                backgroundImage: `url('/img/ChatGPT Image 2026년 2월 26일 오후 05_14_57.png')`,
-              }}
-            ></div>
-            
-            {/* 카드들 */}
-            {currentServices.map((service, index) => (
-              <ServiceCard key={index} service={service} index={index} />
-            ))}
-          </div>
-          {/* 모바일 전용 인디케이터 (3~4개 점) */}
-          <div className="expertise-dots" aria-hidden>
-            {Array.from({ length: SLIDER_DOTS }).map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`expertise-dot ${activeDot === i ? 'active' : ''}`}
-                onClick={() => scrollToDot(i)}
-                aria-label={language === 'ko' ? `슬라이드 ${i + 1}` : `Slide ${i + 1}`}
-              />
-            ))}
+        {/* 모바일 전용: 차콜 컨테이너 > 라이트 패널 > 슬라이더 */}
+        <div className="services-mobile-container">
+          <div className="services-mobile-inner">
+            <div
+              ref={scrollRef}
+              className="expertise-cards-outer"
+              onScroll={updateActiveDot}
+            >
+              <div className="cards-container">
+                {/* 배경 이미지 */}
+                <div 
+                  className="bg-bar"
+                  style={{
+                    backgroundImage: `url('/img/ChatGPT Image 2026년 2월 26일 오후 05_14_57.png')`,
+                  }}
+                ></div>
+                
+                {/* 카드들 */}
+                {currentServices.map((service, index) => (
+                  <ServiceCard key={index} service={service} index={index} />
+                ))}
+              </div>
+            </div>
+            {/* 모바일 전용 인디케이터 */}
+            <div className="expertise-dots" aria-hidden>
+              {Array.from({ length: SLIDER_DOTS }).map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`expertise-dot ${activeDot === i ? 'active' : ''}`}
+                  onClick={() => scrollToDot(i)}
+                  aria-label={language === 'ko' ? `슬라이드 ${i + 1}` : `Slide ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

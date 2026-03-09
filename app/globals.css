@@ -951,6 +951,20 @@ a { color: inherit; text-decoration: none; }
   margin-top: 4px;
 }
 
+.footer-minimal .footer-company-block {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.footer-minimal .footer-company-prefix {
+  flex-shrink: 0;
+}
+.footer-minimal .footer-company-lines span.block {
+  display: block;
+}
+.footer-minimal .footer-company-lines span.block + span.block {
+  margin-top: 4px;
+}
+
 .footer-minimal .footer-list a {
   color: #111111;
   transition: opacity 0.2s ease;

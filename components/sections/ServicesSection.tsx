@@ -17,8 +17,8 @@ const services = {
       icon: 'fullstack',
     },
     {
-      title: 'AI 플랫폼 구축',
-      subtitle: '플랫폼 구축 및 기능 확장',
+      title: '멀티 플랫폼 구축',
+      subtitle: '다양한 플랫폼 기반 서비스 구축',
       description: '임웹, 카페24, Wix, Shopify, WordPress 통합 및 맞춤형 개발.',
       icon: 'platform',
     },
@@ -49,8 +49,8 @@ const services = {
       icon: 'fullstack',
     },
     {
-      title: 'Python AI Development',
-      subtitle: 'Custom platform development and feature expansion',
+      title: 'Multi-Platform Construction',
+      subtitle: 'Building services on various platforms',
       description: 'Imweb, Cafe24, Wix, Shopify, WordPress integration and custom development.',
       icon: 'platform',
     },

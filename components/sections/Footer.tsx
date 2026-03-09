@@ -30,8 +30,9 @@ const content = {
       '보안 및 침투 테스트 / 보안 감사',
     ],
     contact: '연락처',
-    companyLine1: '상호: 아이엠(IAM) | 대표: 고아인',
-    companyLine2: '총괄 매니저 : 서민호',
+    companyPrefix: '상호: 아이엠(IAM) | ',
+    companyLine1: '대표: 고아인',
+    companyLine2: '총괄: 서민호',
     emailLabel: '이메일:',
     email1: 'yoojungrim102@gmail.com',
     email2: 'iam.web.mai@gmail.com',
@@ -52,8 +53,9 @@ const content = {
       'Security & Pen-Testing / Security Audit',
     ],
     contact: 'Contact',
-    companyLine1: 'Company: IAM | CEO: Go A-in',
-    companyLine2: 'General Manager : Suh Min-ho',
+    companyPrefix: 'Company: IAM | ',
+    companyLine1: 'CEO: Go A-in',
+    companyLine2: 'General: Suh Min-ho',
     emailLabel: 'Email:',
     email1: 'yoojungrim102@gmail.com',
     email2: 'iam.web.mai@gmail.com',
@@ -90,8 +92,13 @@ export default function Footer() {
           <div className="footer-grid-col-contact">
             <h4 className="footer-heading">{t.contact}</h4>
             <ul className="footer-list">
-              <li>{t.companyLine1}</li>
-              <li>{t.companyLine2}</li>
+              <li className="footer-company-block">
+                <span className="footer-company-prefix">{t.companyPrefix}</span>
+                <span className="footer-company-lines">
+                  <span className="block">{t.companyLine1}</span>
+                  <span className="block">{t.companyLine2}</span>
+                </span>
+              </li>
               <li className="flex gap-2">
                 <span className="shrink-0">{t.emailLabel}</span>
                 <div className="space-y-1">

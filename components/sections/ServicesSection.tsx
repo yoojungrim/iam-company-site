@@ -18,7 +18,7 @@ const services = {
     },
     {
       title: '멀티 플랫폼 구축',
-      subtitle: '다양한 플랫폼 기반 서비스 구축',
+      subtitle: '다양한 플랫폼 기반 서비스',
       description: '임웹, 카페24, Wix, Shopify, WordPress 통합 및 맞춤형 개발.',
       icon: 'platform',
     },

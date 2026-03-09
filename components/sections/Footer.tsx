@@ -53,7 +53,7 @@ const content = {
     ],
     contact: 'Contact',
     companyLine1: 'Company: IAM | CEO: Go A-in',
-    companyLine2: 'General Manager : Seo Min-ho',
+    companyLine2: 'General Manager : Suh Min-ho',
     emailLabel: 'Email:',
     email1: 'yoojungrim102@gmail.com',
     email2: 'iam.web.mai@gmail.com',

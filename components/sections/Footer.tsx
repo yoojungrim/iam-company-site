@@ -31,11 +31,12 @@ const content = {
     ],
     contact: '연락처',
     companyLine1: '상호: 아이엠(IAM) | 대표: 고아인',
+    companyLine2: '총괄 매니저 : 서민호',
     emailLabel: '이메일:',
     email1: 'yoojungrim102@gmail.com',
     email2: 'iam.web.mai@gmail.com',
     bizInfo: '사업자등록번호: [309-29-01800] | 통신판매업신고: 제 2026-부산해운대-0261호',
-    copyright: '© 2026 IAM. All rights reserved.',
+    copyright: '© 2026 IAM Studio. All rights reserved.',
     copyrightLine4: 'Exclusively designed and developed by AIN, CEO of IAM.',
     copyrightLine5: 'Unauthorized reproduction prohibited.',
   },
@@ -52,11 +53,12 @@ const content = {
     ],
     contact: 'Contact',
     companyLine1: 'Company: IAM | CEO: Go A-in',
+    companyLine2: 'General Manager : Seo Min-ho',
     emailLabel: 'Email:',
     email1: 'yoojungrim102@gmail.com',
     email2: 'iam.web.mai@gmail.com',
     bizInfo: 'Biz Reg No: 309-29-01800 | Mail-order: 2026-Busan-Haeundae-0261',
-    copyright: '© 2026 IAM. All rights reserved.',
+    copyright: '© 2026 IAM Studio. All rights reserved.',
     copyrightLine4: 'Exclusively designed and developed by AIN, CEO of IAM.',
     copyrightLine5: 'Unauthorized reproduction prohibited.',
   },
@@ -89,6 +91,7 @@ export default function Footer() {
             <h4 className="footer-heading">{t.contact}</h4>
             <ul className="footer-list">
               <li>{t.companyLine1}</li>
+              <li>{t.companyLine2}</li>
               <li className="flex gap-2">
                 <span className="shrink-0">{t.emailLabel}</span>
                 <div className="space-y-1">

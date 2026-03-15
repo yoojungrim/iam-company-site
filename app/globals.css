@@ -1080,6 +1080,9 @@ a { color: inherit; text-decoration: none; }
   .footer-minimal .footer-grid-col-contact .footer-list li.flex {
     justify-content: center;
   }
+  .footer-minimal .footer-grid-col-contact .footer-company-block {
+    justify-content: center;
+  }
   .footer-minimal .footer-brand { font-size: 20px; }
   .footer-minimal .footer-bottom {
     margin-left: auto;

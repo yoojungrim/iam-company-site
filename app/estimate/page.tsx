@@ -62,7 +62,7 @@ const estimateCopy = {
     projectType: '프로젝트 유형',
     projectTypeLabels: {
       'Web Application': '웹 애플리케이션',
-      'E-commerce Platform': '이커머스 플랫폼',
+      'E-commerce Platform': '이커머스플랫폼(웹빌더 기반 구축)',
       'Multi-Platform Integration': '멀티 플랫폼 연동',
       'AI/ML Development': 'AI/ML 개발',
       'Security Audit': '보안 감사',

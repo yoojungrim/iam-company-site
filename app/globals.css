@@ -201,6 +201,21 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
+/* 450~480px: 서비스 섹션 제목 아래 그레이 가로선 굵기 보정 + 세로선 위로 15px 연장 */
+@media (min-width: 450px) and (max-width: 480px) {
+  .expertise-section .expertise-wrapper::before {
+    top: calc(var(--title-line-y) - 44px - 15px);
+    height: 5px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .expertise-section .line-left,
+  .expertise-section .line-right {
+    top: calc(var(--title-line-y) - 43px - 15px);
+    height: calc(var(--card-line-y) - var(--title-line-y) - 5px + 15px);
+  }
+}
+
 /* ========================= */
 /* 카드 컨테이너 */
 /* ========================= */

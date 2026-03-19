@@ -40,7 +40,7 @@ const content = {
     copyright: '© 2026 IAM Studio. All rights reserved.',
     copyrightLine4: 'Exclusively designed and developed by AIN, CEO of IAM.',
     copyrightLine5: 'Unauthorized reproduction prohibited.',
-    companyProfilePdf: 'IAMSTUDIO_CompanyProfile',
+    pdfFileLabel: 'PDF파일',
     companyProfilePdfAria: '회사 소개 PDF 열기',
   },
   en: {
@@ -65,7 +65,7 @@ const content = {
     copyright: '© 2026 IAM Studio. All rights reserved.',
     copyrightLine4: 'Exclusively designed and developed by AIN, CEO of IAM.',
     copyrightLine5: 'Unauthorized reproduction prohibited.',
-    companyProfilePdf: 'IAMSTUDIO_CompanyProfile',
+    pdfFileLabel: 'PDF',
     companyProfilePdfAria: 'Open company profile PDF',
   },
 }
@@ -90,6 +90,21 @@ export default function Footer() {
               {t.serviceLines.map((line, index) => (
                 <li key={index}>{line}</li>
               ))}
+              <li>
+                <a
+                  href="/documents/IAMSTUDIO_CompanyProfile.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-services-pdf-link"
+                  aria-label={t.companyProfilePdfAria}
+                >
+                  {t.pdfFileLabel}{' '}
+                  <span className="footer-services-pdf-code" aria-hidden>
+                    &lt;/&gt;
+                  </span>{' '}
+                  IAMSTUDIO_CompanyProfile
+                </a>
+              </li>
             </ul>
           </div>
           <div className="footer-grid-sep" aria-hidden="true" />
@@ -121,17 +136,6 @@ export default function Footer() {
             <p>{t.copyright}</p>
             <p>{t.copyrightLine4}</p>
             <p>{t.copyrightLine5}</p>
-          </div>
-          <div className="footer-company-pdf">
-            <a
-              href="/documents/IAMSTUDIO_CompanyProfile.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-company-pdf-link"
-              aria-label={t.companyProfilePdfAria}
-            >
-              {t.companyProfilePdf}
-            </a>
           </div>
           <div className="footer-icons">
             {footerIcons.map((icon) => (

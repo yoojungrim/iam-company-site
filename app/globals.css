@@ -1007,6 +1007,22 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 
+.footer-minimal .footer-services-pdf-link {
+  color: #111111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-minimal .footer-services-pdf-link:hover {
+  opacity: 0.7;
+}
+
+.footer-minimal .footer-services-pdf-code {
+  font-family: ui-monospace, monospace;
+  letter-spacing: -0.02em;
+}
+
 .footer-minimal .footer-icons {
   display: flex;
   flex-wrap: wrap;

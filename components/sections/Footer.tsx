@@ -40,6 +40,8 @@ const content = {
     copyright: '© 2026 IAM Studio. All rights reserved.',
     copyrightLine4: 'Exclusively designed and developed by AIN, CEO of IAM.',
     copyrightLine5: 'Unauthorized reproduction prohibited.',
+    companyProfilePdf: 'IAMSTUDIO_CompanyProfile',
+    companyProfilePdfAria: '회사 소개 PDF 열기',
   },
   en: {
     brand: 'IAM',
@@ -63,6 +65,8 @@ const content = {
     copyright: '© 2026 IAM Studio. All rights reserved.',
     copyrightLine4: 'Exclusively designed and developed by AIN, CEO of IAM.',
     copyrightLine5: 'Unauthorized reproduction prohibited.',
+    companyProfilePdf: 'IAMSTUDIO_CompanyProfile',
+    companyProfilePdfAria: 'Open company profile PDF',
   },
 }
 
@@ -117,6 +121,17 @@ export default function Footer() {
             <p>{t.copyright}</p>
             <p>{t.copyrightLine4}</p>
             <p>{t.copyrightLine5}</p>
+          </div>
+          <div className="footer-company-pdf">
+            <a
+              href="/documents/IAMSTUDIO_CompanyProfile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-company-pdf-link"
+              aria-label={t.companyProfilePdfAria}
+            >
+              {t.companyProfilePdf}
+            </a>
           </div>
           <div className="footer-icons">
             {footerIcons.map((icon) => (

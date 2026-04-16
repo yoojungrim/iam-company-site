@@ -33,12 +33,30 @@ export default function Navigation() {
 
   useEffect(() => {
     if (isMobileMenuOpen) {
+      const scrollY = window.scrollY
+      document.documentElement.style.overflow = 'hidden'
       document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
     } else {
+      const previousTop = document.body.style.top
+      const restoreY = previousTop ? Math.abs(parseInt(previousTop, 10)) : 0
+      document.documentElement.style.overflow = ''
       document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      if (restoreY) {
+        window.scrollTo(0, restoreY)
+      }
     }
     return () => {
+      document.documentElement.style.overflow = ''
       document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
     }
   }, [isMobileMenuOpen])
 
@@ -61,15 +79,12 @@ export default function Navigation() {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setIsMobileMenuOpen(false)
         setIsLanguageOpen(false)
       }
     }
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
   }, [])
-
-  const closeMobileMenu = () => setIsMobileMenuOpen(false)
 
   const languages = [
     { code: 'ko' as const, name: '한국어', nameEn: 'Korean' },
@@ -173,11 +188,11 @@ export default function Navigation() {
               type="button"
               data-menu-toggle
               aria-expanded={isMobileMenuOpen}
-              aria-label={isMobileMenuOpen ? (language === 'ko' ? '메뉴 닫기' : 'Close menu') : (language === 'ko' ? '메뉴 열기' : 'Open menu')}
-              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              aria-label={language === 'ko' ? '메뉴 열기' : 'Open menu'}
+              onClick={() => setIsMobileMenuOpen(true)}
               className="nav-menu-btn px-4 py-2 text-black border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50"
             >
-              {isMobileMenuOpen ? (language === 'ko' ? '닫기' : 'Close') : 'Menu'}
+              Menu
             </button>
           </div>
         </div>
@@ -185,18 +200,27 @@ export default function Navigation() {
 
       {/* 모바일/태블릿 메뉴 패널 (md 미만에서만 표시) - 열리면 전체 화면 덮고 스크롤로 메뉴만 보이게 */}
       <div
-        className={`nav-mobile-panel md:hidden fixed inset-0 top-0 left-0 right-0 bottom-0 z-40 bg-white shadow-lg transition-all duration-300 ease-out ${
+        className={`nav-mobile-panel md:hidden fixed inset-0 z-[60] bg-white shadow-lg transition-all duration-300 ease-out ${
           isMobileMenuOpen ? 'visible opacity-100' : 'invisible opacity-0 pointer-events-none'
         }`}
-        style={isMobileMenuOpen ? { paddingTop: '6rem' } : undefined}
+        style={isMobileMenuOpen ? { paddingTop: '6rem', overflow: 'hidden' } : undefined}
         aria-hidden={!isMobileMenuOpen}
       >
-        <div className="container mx-auto px-6 py-8 flex flex-col gap-6 overflow-y-auto h-full">
+        <div className="container mx-auto px-6 py-8 flex h-full flex-col gap-6 overflow-hidden">
+          <div className="flex justify-end">
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-4 py-2 text-black border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50"
+              aria-label={language === 'ko' ? '메뉴 닫기' : 'Close menu'}
+            >
+              {language === 'ko' ? '닫기' : 'Close'}
+            </button>
+          </div>
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              onClick={closeMobileMenu}
               className={`text-lg font-medium py-2 border-b border-gray-100 ${
                 pathname === item.href ? 'text-black' : 'text-gray-600'
               }`}

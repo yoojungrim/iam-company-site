@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 const services = {
@@ -129,13 +130,38 @@ function ServiceIcon({ type, color = '#d1d5db' }: { type: string; color?: string
 export default function ServicesSection() {
   const { language } = useLanguage()
   const currentServices = services[language]
+  const mobileTrackRef = useRef<HTMLDivElement>(null)
+  const [mobileSlideIndex, setMobileSlideIndex] = useState(0)
+
+  useEffect(() => {
+    const track = mobileTrackRef.current
+    if (!track) return
+
+    const isMobileLike = () => window.innerWidth < 1347
+    if (!isMobileLike()) return
+
+    const timer = window.setInterval(() => {
+      if (!track || !isMobileLike()) return
+      const cards = Array.from(track.querySelectorAll('.mobile-service-card')) as HTMLDivElement[]
+      if (cards.length === 0) return
+
+      setMobileSlideIndex((prev) => {
+        const next = (prev + 1) % cards.length
+        track.scrollTo({
+          left: cards[next].offsetLeft - track.offsetLeft,
+          behavior: 'smooth',
+        })
+        return next
+      })
+    }, 2000)
+
+    return () => window.clearInterval(timer)
+  }, [currentServices.length])
 
   return (
-    <section 
-      id="services" 
-      className="expertise-section"
-    >
-      <div className="expertise-wrapper" style={{ maxWidth: '1400px', margin: '0 auto', padding: '80px 20px' }}>
+    <section id="services" className="expertise-section">
+      {/* Desktop: 1347px 이상 기존 구조 유지 */}
+      <div className="expertise-wrapper expertise-desktop-layout" style={{ maxWidth: '1400px', margin: '0 auto', padding: '80px 20px' }}>
           {/* 🔥 세로선 추가 (왼쪽) */}
           <div className="line-left" />
 
@@ -157,7 +183,24 @@ export default function ServicesSection() {
           
           {/* 카드들 */}
           {currentServices.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <ServiceCard key={index} service={service} index={index} variant="desktop" />
+          ))}
+        </div>
+      </div>
+
+      {/* Tablet/Mobile: 1347px 미만 슬라이드 전용 구조 */}
+      <div className="expertise-mobile-layout px-0 py-12">
+        <div className="px-4">
+          <h2 className="expertise-title mb-8 text-center">
+            {language === 'ko' ? 'OUR EXPERTISE & INNOVATION' : 'OUR EXPERTISE & INNOVATION'}
+          </h2>
+        </div>
+        <div
+          ref={mobileTrackRef}
+          className="expertise-mobile-track flex flex-row gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory"
+        >
+          {currentServices.map((service, index) => (
+            <ServiceCard key={index} service={service} index={index} variant="mobile" />
           ))}
         </div>
       </div>
@@ -165,19 +208,31 @@ export default function ServicesSection() {
   )
 }
 
-function ServiceCard({ service, index }: { service: typeof services.ko[0]; index: number }) {
+function ServiceCard({
+  service,
+  index,
+  variant = 'desktop',
+}: {
+  service: typeof services.ko[0]
+  index: number
+  variant?: 'desktop' | 'mobile'
+}) {
   return (
     <div 
-      className="service-card"
-      style={{
-        width: '220px',
-        minWidth: '220px',
-        maxWidth: '220px',
-        minHeight: '220px',
-        maxHeight: '220px',
-        height: '220px',
-        flex: '0 0 220px',
-      }}
+      className={variant === 'mobile' ? 'service-card mobile-service-card' : 'service-card'}
+      style={
+        variant === 'mobile'
+          ? undefined
+          : {
+              width: '220px',
+              minWidth: '220px',
+              maxWidth: '220px',
+              minHeight: '220px',
+              maxHeight: '220px',
+              height: '220px',
+              flex: '0 0 220px',
+            }
+      }
     >
       {/* 아이콘 영역 */}
       <div className="mb-6 h-20 flex items-center justify-center">

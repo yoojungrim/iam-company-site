@@ -246,7 +246,8 @@ a { color: inherit; text-decoration: none; }
   }
 
   .expertise-mobile-layout {
-    display: block;
+     display: block;  
+     overflow: visible !important;
   }
 
   .expertise-mobile-layout .expertise-title {
@@ -262,6 +263,7 @@ a { color: inherit; text-decoration: none; }
     scroll-padding-left: 6%;
     padding-left: 6%;
     padding-right: 6%;
+    overflow-y: visible !important;
   }
   .expertise-mobile-track::-webkit-scrollbar {
     display: none;
@@ -271,17 +273,27 @@ a { color: inherit; text-decoration: none; }
     width: 220px !important;
     min-width: 220px !important;
     max-width: 220px !important;
-    height: 220px !important;
+  
+    aspect-ratio: 1 / 1;  
+  
     flex: 0 0 220px !important;
   
     scroll-snap-align: start;
   }
   .service-card {
     animation: none !important;
+    position: relative;
+    z-index: 1;
   }
+  
   
   .service-card::after {
     animation: none !important;
+  }
+
+  
+  .service-card:hover {
+    z-index: 20;
   }
 }
 

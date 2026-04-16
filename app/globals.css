@@ -268,14 +268,20 @@ a { color: inherit; text-decoration: none; }
   }
 
   .mobile-service-card {
-    width: min(88vw, 420px) !important;
-    min-width: min(88vw, 420px) !important;
-    max-width: min(88vw, 420px) !important;
-    height: auto !important;
-    aspect-ratio: 1 / 1;
-    flex: 0 0 min(88vw, 420px) !important;
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+    height: 220px !important;
+    flex: 0 0 220px !important;
+  
     scroll-snap-align: start;
-    animation: none;
+  }
+  .service-card {
+    animation: none !important;
+  }
+  
+  .service-card::after {
+    animation: none !important;
   }
 }
 

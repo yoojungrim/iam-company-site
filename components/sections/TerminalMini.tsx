@@ -119,7 +119,7 @@ const lines = [
   "",
   "        MIN sub-manager online",
   "        assisting system operations",
-  "        MINAIN Love Forever",
+
   "",
   "> building scalable architecture...",
   "> initializing distributed nodes...",

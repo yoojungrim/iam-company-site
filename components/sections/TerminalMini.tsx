@@ -101,7 +101,7 @@ const lines = [
   "               IAM CORE",
   "        Architected by AIN",
   "      Founder & Lead Architect",
-  "             AIN♡MIN",
+
   "",
   "> loading neural engine...",
   "> allocating compute resources...",
@@ -119,7 +119,7 @@ const lines = [
   "",
   "        MIN sub-manager online",
   "        assisting system operations",
-  "        MIN♡AIN Love Forever",
+  "        MINAIN Love Forever",
   "",
   "> building scalable architecture...",
   "> initializing distributed nodes...",
